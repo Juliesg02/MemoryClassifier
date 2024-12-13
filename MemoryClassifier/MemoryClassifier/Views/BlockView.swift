@@ -11,14 +11,25 @@ struct BlockView: View {
     var body: some View {
         
         
-        ZStack {
+        HStack {
+            VStack {
+                Text("00")
+                    .font(.title)
+                    .fontWeight(.bold)
+                Text("THU")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+            }
+            .foregroundStyle(Color.gray)
+                
+            
             HStack {
                 VStack (alignment: .leading) {
                     HStack {
                         Text("Food with friends")
                             .font(.title2)
                             .fontWeight(.semibold)
-                            
+                        
                         Spacer()
                     }
                     .padding(.bottom, 20)
