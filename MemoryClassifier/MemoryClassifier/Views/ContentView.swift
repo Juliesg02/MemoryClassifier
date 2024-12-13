@@ -9,24 +9,36 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack {
-            VStack {
-                ForEach (0..<7) { _ in
-                    BlockView()
+        NavigationView {
+            ZStack {
+                VStack {
+                    ForEach (0..<3) { _ in
+                        BlockView()
+                    }
                 }
-            }
-            .padding()
-            
-            VStack {
+                .padding()
                 
-                Circle()
-                    .stroke(Color.blue, lineWidth: 2)
-                    .frame(width: 100, height: 100)
                 
-            }
-            
+                //Button
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Button( action: {
+                            print("Add")
+                        }, label : {
+                            AddButtonView()
+                        })
+                        
+                    }
+                }
+                .padding(.bottom, 30)
+                .padding(.trailing, 20)
+                
+            }.navigationTitle("Memory Classifier")
         }
     }
+    
 }
 
 #Preview {
