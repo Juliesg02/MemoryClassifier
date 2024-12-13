@@ -11,13 +11,12 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                VStack {
-                    ForEach (0..<3) { _ in
+                ScrollView {
+                    ForEach (0..<10) { _ in
                         BlockView()
                     }
+                    .padding()
                 }
-                .padding()
-                
                 
                 //Button
                 VStack {
