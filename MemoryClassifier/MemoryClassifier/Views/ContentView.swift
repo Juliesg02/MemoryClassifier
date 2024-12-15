@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var isShowingSheet = false
+    @State private var title: String = ""
+    @State private var description: String = ""
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -17,27 +22,49 @@ struct ContentView: View {
                     }
                     .padding()
                 }
-                
-                //Button
-                VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        Button( action: {
-                            print("Add")
-                        }, label : {
-                            AddButtonView()
-                        })
-                        
+            }
+            .navigationTitle("Memory Classifier")
+            .toolbar {
+                Button("Add") {
+                    isShowingSheet.toggle()
+                }
+                .sheet(isPresented: $isShowingSheet, onDismiss: didDismiss) {
+                    NavigationView {
+                        Form {
+                            Section (header: Text("Title of your memory")){
+                                TextField("Title", text: $title)
+                            }
+                            
+                            Section (header: Text("How do you feel?")){
+                                TextEditor(text: $description)
+                            }
+                            
+                        }
+                        .navigationTitle("Sheet")
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button("Save") {
+                                    // Code here
+                                    isShowingSheet.toggle()
+                                }
+                            }
+                            ToolbarItem(placement: .navigationBarLeading) {
+                                Button("Cancel") {
+                                    // Add your cancel action here
+                                    isShowingSheet.toggle()
+                                }
+                                .foregroundStyle(.red)
+                            }
+                        }
                     }
                 }
-                .padding(.bottom, 30)
-                .padding(.trailing, 20)
-                
-            }.navigationTitle("Memory Classifier")
+            }
         }
     }
     
+    func didDismiss() {
+        // Handle the dismissing action.
+    }
 }
 
 #Preview {
