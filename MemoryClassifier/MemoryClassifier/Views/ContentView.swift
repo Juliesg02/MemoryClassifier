@@ -28,38 +28,6 @@ struct ContentView: View {
                 Button("Add") {
                     isShowingSheet.toggle()
                 }
-                .sheet(isPresented: $isShowingSheet) {
-                    NavigationView {
-                        Form {
-                            Section (header: Text("Title of your memory")){
-                                TextField("Title", text: $title)
-                            }
-                            
-                            Section (header: Text("How do you feel?")){
-                                TextField("Memory", text: $description, axis: .vertical)
-                            }
-                            
-                        }
-                        .navigationTitle("Sheet")
-                        .toolbar {
-                            ToolbarItem(placement: .navigationBarTrailing) {
-                                Button("Save") {
-                                    // Code here
-                                    //Add info to swift data
-                                    //Remove text
-                                    isShowingSheet.toggle()
-                                }
-                            }
-                            ToolbarItem(placement: .navigationBarLeading) {
-                                Button("Cancel") {
-                                    // Add your cancel action here
-                                    isShowingSheet.toggle()
-                                }
-                                .foregroundStyle(.red)
-                            }
-                        }
-                    }
-                }
             }
         }
     }
