@@ -11,16 +11,14 @@ struct BlockView: View {
     
     let memory: Memory
     
-    //let components = Calendar.current.dateComponents([.hour,.minute], from: memory.date)
-    
-    
     var body: some View {
+
         HStack {
             VStack {
-                Text("00")
+                Text(memory.formattedDay)
                     .font(.title)
                     .fontWeight(.bold)
-                Text("THU")
+                Text(memory.formattedWeekDay)
                     .font(.title2)
                     .fontWeight(.semibold)
             }
@@ -33,7 +31,6 @@ struct BlockView: View {
                         Text(memory.title)
                             .font(.title2)
                             .fontWeight(.semibold)
-                        
                         Spacer()
                     }
                     .padding(.bottom, 20)
@@ -53,7 +50,7 @@ struct BlockView: View {
             .frame(maxWidth: .infinity)
             .background(Color.white)
             .cornerRadius(30)
-            .shadow(radius: 10)
+            .shadow(radius: 4)
         }
     }
 }
