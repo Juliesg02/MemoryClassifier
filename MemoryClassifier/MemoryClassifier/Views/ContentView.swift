@@ -15,14 +15,15 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                ScrollView {
-                    
-                    ForEach (memories) { memory in
-                        BlockView(memory: memory)
-                    }
+            List {
+                ForEach(memories) { memory in
+                    BlockView(memory: memory)
+                        .listRowSeparator(.hidden)
                 }
+                .onDelete(perform: deleteMemory)
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.clear)
             .navigationTitle("Memory Classifier")
             .toolbar {
                 Button("Add Sample", action: addSamples)
@@ -39,6 +40,13 @@ struct ContentView: View {
         modelContext.insert(paris)
         modelContext.insert(madrid)
             }
+    
+    func deleteMemory(_ indexSet: IndexSet) {
+        for index in indexSet {
+            let memory = memories[index]
+            modelContext.delete(memory)
+        }
+    }
 }
 
 #Preview {
