@@ -47,13 +47,7 @@ struct BlockView: View {
             }
             .padding()
             .frame(maxWidth: .infinity)
-            .background(LinearGradient(
-                gradient: Gradient(stops: [
-                    Gradient.Stop(color: .cyan, location: 0.4),
-                    Gradient.Stop(color: .yellow, location: 0.6)
-                ]),
-                startPoint: .leading,
-                endPoint: .trailing))
+            .background(Color.white)
             .cornerRadius(30)
             .shadow(radius: 10)
         }

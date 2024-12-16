@@ -28,7 +28,7 @@ struct ContentView: View {
                 Button("Add") {
                     isShowingSheet.toggle()
                 }
-                .sheet(isPresented: $isShowingSheet, onDismiss: didDismiss) {
+                .sheet(isPresented: $isShowingSheet) {
                     NavigationView {
                         Form {
                             Section (header: Text("Title of your memory")){
@@ -36,7 +36,7 @@ struct ContentView: View {
                             }
                             
                             Section (header: Text("How do you feel?")){
-                                TextEditor(text: $description)
+                                TextField("Memory", text: $description, axis: .vertical)
                             }
                             
                         }
@@ -45,6 +45,8 @@ struct ContentView: View {
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button("Save") {
                                     // Code here
+                                    //Add info to swift data
+                                    //Remove text
                                     isShowingSheet.toggle()
                                 }
                             }
@@ -60,10 +62,6 @@ struct ContentView: View {
                 }
             }
         }
-    }
-    
-    func didDismiss() {
-        // Handle the dismissing action.
     }
 }
 
