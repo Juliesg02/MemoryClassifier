@@ -17,14 +17,17 @@ struct ContentView: View {
         NavigationStack {
             List {
                 ForEach(memories) { memory in
-                    BlockView(memory: memory)
-                        .listRowSeparator(.hidden)
+                    NavigationLink(value: memory) {
+                        BlockView(memory: memory)
+                            .listRowSeparator(.hidden)
+                    }
                 }
                 .onDelete(perform: deleteMemory)
             }
             .scrollContentBackground(.hidden)
             .background(Color.clear)
             .navigationTitle("Memory Classifier")
+            .navigationDestination(for: Memory.self, destination: MemoryView.init)
             .toolbar {
                 Button("Add Sample", action: addSamples)
             }

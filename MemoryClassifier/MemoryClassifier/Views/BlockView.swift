@@ -48,9 +48,9 @@ struct BlockView: View {
             }
             .padding()
             .frame(maxWidth: .infinity)
-            .background(Color.white)
-            .cornerRadius(30)
-            .shadow(radius: 4)
+            //.background(Color.white)
+            //.cornerRadius(30)
+            //.shadow(radius: 4)
         }
     }
 }
