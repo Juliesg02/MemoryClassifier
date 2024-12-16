@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct BlockView: View {
+    
+    let memory: Memory
+    
+    //let components = Calendar.current.dateComponents([.hour,.minute], from: memory.date)
+    
+    
     var body: some View {
-        
-        
         HStack {
             VStack {
                 Text("00")
@@ -26,14 +30,14 @@ struct BlockView: View {
             HStack {
                 VStack (alignment: .leading) {
                     HStack {
-                        Text("Food with friends")
+                        Text(memory.title)
                             .font(.title2)
                             .fontWeight(.semibold)
                         
                         Spacer()
                     }
                     .padding(.bottom, 20)
-                    Text("I enjoy to use my phone to take pictures of food with friends.")
+                    Text(memory.textDescription)
                         .italic()
                 }
                 .font(.headline)
@@ -41,7 +45,7 @@ struct BlockView: View {
                 
                 Spacer()
                 
-                Text("😍")
+                Text(memory.sentimentEmoji)
                     .font(.largeTitle)
                     .padding(.horizontal)
             }
@@ -55,5 +59,5 @@ struct BlockView: View {
 }
 
 #Preview {
-    BlockView()
+    BlockView(memory: Memory(title: "Food with friends", textDescription: "I love food with friends", date: .now, sentimentEmoji: "😍", sentimentScore: "1.0"))
 }

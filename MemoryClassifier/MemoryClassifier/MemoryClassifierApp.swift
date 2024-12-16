@@ -4,7 +4,7 @@
 //
 //  Created by Julio Enrique Sanchez Guajardo on 09/12/24.
 //
-import SwiftData
+import SwiftData    
 import SwiftUI
 
 @main
@@ -13,6 +13,6 @@ struct MemoryClassifierApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: Memory.self)
+        .modelContainer(for: Memory.self) //this create the modelcontext
     }
 }

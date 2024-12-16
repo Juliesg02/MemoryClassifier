@@ -11,15 +11,15 @@ import Foundation
 @Model
 class Memory {
     var title: String
-    var textdescription: String
+    var textDescription: String
     var date : Date
     var sentimentEmoji : String
     var sentimentScore : String
     
     
-    init(title: String = "", description: String = "", date: Date = Date.now, sentimentEmoji: String = "😶", sentimentScore: String = "0.0") {
+    init(title: String = "", textDescription: String = "", date: Date = Date.now, sentimentEmoji: String = "😶", sentimentScore: String = "0.0") {
         self.title = title
-        self.textdescription = description
+        self.textDescription = textDescription
         self.date = date
         self.sentimentEmoji = sentimentEmoji
         self.sentimentScore = sentimentScore
