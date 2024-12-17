@@ -16,7 +16,8 @@ class Memory {
     var sentimentEmoji : String
     var sentimentScore : String
     var doubleSentimentScore: Double = 0.0
-    var month : Int { Calendar.current.component(.month, from: date) }
+    
+    var formattedMonth: String { date.formatted(.dateTime.month(.abbreviated)) }
     var formattedWeekDay: String { date.formatted(.dateTime.weekday(.abbreviated)) }
     var formattedDay: String {
         date.formatted(.dateTime.day(.twoDigits))

@@ -15,6 +15,9 @@ struct BlockView: View {
 
         HStack {
             VStack {
+                Text(memory.formattedMonth)
+                    .font(.title2)
+                    .fontWeight(.semibold)
                 Text(memory.formattedDay)
                     .font(.title)
                     .fontWeight(.bold)

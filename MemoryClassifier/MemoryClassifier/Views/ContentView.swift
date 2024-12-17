@@ -31,9 +31,9 @@ struct ContentView: View {
             .navigationDestination(for: Memory.self, destination: MemoryView.init)
             .toolbar {
                 //Button("Add Sample", action: addSamples)
-                Button("Add Destination", systemImage: "plus", action: addDestination)
+                Button("Add Memory", systemImage: "plus", action: addDestination)
                 
-                Menu ("Filter", systemImage: "arrow.up.arrow.down"){
+                Menu ("Order", systemImage: "arrow.up.arrow.down"){
                     Picker("Filter", selection: $sortDate) {
                         Text("Recent")
                             .tag(SortDescriptor(\Memory.date, order: .reverse))

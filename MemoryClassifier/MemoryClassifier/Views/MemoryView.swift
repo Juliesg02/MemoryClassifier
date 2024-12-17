@@ -29,11 +29,11 @@ struct MemoryView: View {
                 }
                 .onChange(of: memory.textDescription, calculateSentimentScore)
                 
-                Text("\(memory.doubleSentimentScore)")
+                //Text("\(memory.doubleSentimentScore)")
 
 
             }
-            .navigationTitle("Memory")
+            .navigationTitle("Memory Details")
         }
     }
     func calculateSentimentScore(){
