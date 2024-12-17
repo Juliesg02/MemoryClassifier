@@ -11,20 +11,11 @@ import SwiftUI
 struct ContentView: View {
     
     @Environment(\.modelContext) var modelContext
-    @Query(sort: \Memory.date, order: .reverse) var memories: [Memory]
     @State private var path = [Memory]()
     
     var body: some View {
         NavigationStack (path: $path) {
-            List {
-                ForEach(memories) { memory in
-                    NavigationLink(value: memory) {
-                        BlockView(memory: memory)
-                            .listRowSeparator(.hidden)
-                    }
-                }
-                .onDelete(perform: deleteMemory)
-            }
+            MemoriesListView()
             .scrollContentBackground(.hidden)
             .background(Color.clear)
             .navigationTitle("Memory Classifier")
@@ -53,12 +44,6 @@ struct ContentView: View {
         path = [memory]
     }
     
-    func deleteMemory(_ indexSet: IndexSet) {
-        for index in indexSet {
-            let memory = memories[index]
-            modelContext.delete(memory)
-        }
-    }
 }
 
 #Preview {
