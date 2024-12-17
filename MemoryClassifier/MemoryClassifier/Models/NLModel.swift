@@ -15,7 +15,7 @@ let sentimentEmojis: [String] = [
 
 func sentimentString (for sentimentScore: String) -> String {
     let emojiIndex = Int((sentimentScore as NSString).floatValue * 10) + 10
-    return "\(sentimentEmojis[emojiIndex]) (\(sentimentScore))"
+    return "\(sentimentEmojis[emojiIndex])"
 }
 
 func getSentimentScore (from text: String) -> String? {

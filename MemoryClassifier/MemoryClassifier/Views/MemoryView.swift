@@ -8,14 +8,18 @@ import SwiftData
 import SwiftUI
 
 struct MemoryView: View {
-    @State private var title: String = ""
-    @State private var description: String = ""
-    @State private var date: Date = Date()
+
     @Bindable var memory: Memory
         
     var body: some View {
         NavigationView {
             Form {
+                
+                Section (header: Text("Date of your memory")) {
+                    DatePicker("Date", selection: $memory.date, displayedComponents: .date)
+                        .labelsHidden()
+                }
+                
                 Section (header: Text("Title of your memory")){
                     TextField("Title", text: $memory.title)
                 }
@@ -23,13 +27,19 @@ struct MemoryView: View {
                 Section (header: Text("How do you feel?")){
                     TextField("Memory", text: $memory.textDescription, axis: .vertical)
                 }
+                .onChange(of: memory.textDescription, calculateSentimentScore)
                 
-                Section (header: Text("Date of your memory")) {
-                    DatePicker("Date", selection: $memory.date)
-                }
                 
+
+
             }
             .navigationTitle("Memory")
+        }
+    }
+    func calculateSentimentScore(){
+        if let averageTokenizedSentimentScore = calculateAverageTokenizedSentimentScore(from: memory.textDescription) {
+            memory.sentimentScore = averageTokenizedSentimentScore
+            memory.sentimentEmoji = sentimentString(for: averageTokenizedSentimentScore)
         }
     }
 }
