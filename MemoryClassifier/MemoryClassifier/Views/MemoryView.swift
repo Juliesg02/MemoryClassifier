@@ -16,7 +16,7 @@ struct MemoryView: View {
             Form {
                 
                 Section (header: Text("Date of your memory")) {
-                    DatePicker("Date", selection: $memory.date, displayedComponents: .date)
+                    DatePicker("Date", selection: $memory.date, in: ...Date.now, displayedComponents: .date)
                         .labelsHidden()
                 }
                 
