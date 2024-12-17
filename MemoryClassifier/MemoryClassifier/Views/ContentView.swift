@@ -11,7 +11,7 @@ import SwiftUI
 struct ContentView: View {
     
     @Environment(\.modelContext) var modelContext
-    @Query(sort: \Memory.date) var memories: [Memory]
+    @Query(sort: \Memory.date, order: .reverse) var memories: [Memory]
     @State private var path = [Memory]()
     
     var body: some View {
