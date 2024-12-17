@@ -8,14 +8,23 @@
 import SwiftData
 import SwiftUI
 
+enum FilterValue {
+    case All
+    case Pleasant
+    case Unpleasant
+}
+
+
 struct ContentView: View {
     
     @Environment(\.modelContext) var modelContext
     @State private var path = [Memory]()
+    @State private var sortDate = SortDescriptor(\Memory.date, order: .reverse) //Default sort
+    @State private var filterSentiment = FilterValue.All
     
     var body: some View {
         NavigationStack (path: $path) {
-            MemoriesListView()
+            MemoriesListView(sort: sortDate, filter: filterSentiment)
             .scrollContentBackground(.hidden)
             .background(Color.clear)
             .navigationTitle("Memory Classifier")
@@ -23,7 +32,28 @@ struct ContentView: View {
             .toolbar {
                 //Button("Add Sample", action: addSamples)
                 Button("Add Destination", systemImage: "plus", action: addDestination)
-
+                
+                Menu ("Filter", systemImage: "arrow.up.arrow.down"){
+                    Picker("Filter", selection: $sortDate) {
+                        Text("Recent")
+                            .tag(SortDescriptor(\Memory.date, order: .reverse))
+                        Text("Oldest")
+                            .tag(SortDescriptor(\Memory.date))
+                    }
+                    .pickerStyle(.inline)
+                }
+                
+                Menu ("Filter", systemImage: "slider.horizontal.3"){
+                    Picker("Filter", selection: $filterSentiment) {
+                        Text("All")
+                            .tag(FilterValue.All)
+                        Text("Pleasant")
+                            .tag(FilterValue.Pleasant)
+                        Text("UnPleasant")
+                            .tag(FilterValue.Unpleasant)
+                    }
+                    .pickerStyle(.inline)
+                }
             }
         }
     }

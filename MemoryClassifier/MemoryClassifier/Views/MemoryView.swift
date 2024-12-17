@@ -29,7 +29,7 @@ struct MemoryView: View {
                 }
                 .onChange(of: memory.textDescription, calculateSentimentScore)
                 
-                
+                Text("\(memory.doubleSentimentScore)")
 
 
             }

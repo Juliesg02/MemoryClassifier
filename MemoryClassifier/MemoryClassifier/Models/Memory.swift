@@ -15,11 +15,12 @@ class Memory {
     var date : Date
     var sentimentEmoji : String
     var sentimentScore : String
-    var month : Int { Calendar.current.component(.month, from: date) }
-    // Computed property to format weekday as MON, TUE, etc.
-    var formattedWeekDay: String {
-        date.formatted(.dateTime.weekday(.abbreviated))
+    var doubleSentimentScore: Double {
+        //print(sentimentScore)
+        return Double(self.sentimentScore) ?? 0.0
     }
+    var month : Int { Calendar.current.component(.month, from: date) }
+    var formattedWeekDay: String { date.formatted(.dateTime.weekday(.abbreviated)) }
     var formattedDay: String {
         date.formatted(.dateTime.day(.twoDigits))
     }
