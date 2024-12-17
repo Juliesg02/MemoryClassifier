@@ -25,9 +25,25 @@ struct MemoriesListView: View {
         }
     }
     
-        init(sort: SortDescriptor<Memory>) {
+    init(sort: SortDescriptor<Memory>, filter: FilterValue) {
     
-            _memories = Query(sort: [sort])
+        // Define the predicate based on the filter value
+        let resultPredicate: Predicate<Memory>
+        
+        switch filter {
+        case .All:
+            // All memories, no filter
+            resultPredicate = #Predicate { _ in true }
+        case .Pleasant:
+            // Memories with positive sentiment
+            resultPredicate = #Predicate { $0.doubleSentimentScore > 0.0 }
+        case .Unpleasant:
+            // Memories with negative sentiment
+            resultPredicate = #Predicate { $0.doubleSentimentScore < 0.0 }
+        }
+
+        
+        _memories = Query(filter: resultPredicate,sort: [sort])
         }
     
     func deleteMemory(_ indexSet: IndexSet) {
@@ -40,5 +56,5 @@ struct MemoriesListView: View {
 }
 
 #Preview {
-    MemoriesListView(sort: SortDescriptor(\Memory.date, order: .reverse))
+    MemoriesListView(sort: SortDescriptor(\Memory.date, order: .reverse), filter: .All)
 }
