@@ -24,7 +24,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack (path: $path) {
-            MemoriesListView(sort: sortDate, filter: filterSentiment)
+            MemoriesListView(sort: sortDate)
             .scrollContentBackground(.hidden)
             .background(Color.clear)
             .navigationTitle("Memory Classifier")

@@ -15,10 +15,7 @@ class Memory {
     var date : Date
     var sentimentEmoji : String
     var sentimentScore : String
-    var doubleSentimentScore: Double {
-        //print(sentimentScore)
-        return Double(self.sentimentScore) ?? 0.0
-    }
+    var doubleSentimentScore: Double = 0.0
     var month : Int { Calendar.current.component(.month, from: date) }
     var formattedWeekDay: String { date.formatted(.dateTime.weekday(.abbreviated)) }
     var formattedDay: String {
@@ -32,6 +29,7 @@ class Memory {
         self.date = date
         self.sentimentEmoji = sentimentEmoji
         self.sentimentScore = sentimentScore
+        self.doubleSentimentScore = Double((sentimentScore as NSString).floatValue)
     }
     
 }

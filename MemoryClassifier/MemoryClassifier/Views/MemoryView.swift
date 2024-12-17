@@ -39,6 +39,7 @@ struct MemoryView: View {
     func calculateSentimentScore(){
         if let averageTokenizedSentimentScore = calculateAverageTokenizedSentimentScore(from: memory.textDescription) {
             memory.sentimentScore = averageTokenizedSentimentScore
+            memory.doubleSentimentScore = Double((averageTokenizedSentimentScore as NSString).floatValue)
             memory.sentimentEmoji = sentimentString(for: averageTokenizedSentimentScore)
         }
     }
