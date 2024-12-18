@@ -27,7 +27,7 @@ struct ContentView: View {
             MemoriesListView(sort: sortDate, filter: filterSentiment)
             .scrollContentBackground(.hidden)
             .background(Color.clear)
-            .navigationTitle("Memory Classifier")
+            .navigationTitle("Memoira")
             .navigationDestination(for: Memory.self, destination: MemoryView.init)
             .toolbar {
                 //Button("Add Sample", action: addSamples)
